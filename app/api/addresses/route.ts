@@ -33,7 +33,7 @@ export async function PUT(request: Request) {
   return NextResponse.json('success', { status: 200 })
 }
 
-export async function POST(request: Request) {
+export async function POST() {
   try {
     const notUpdated = path.join(
       process.cwd(),
