@@ -30,7 +30,7 @@ export function AddressProvider({ children }: AddressProviderProps) {
     const fetchAddresses = async () => {
       setLoading(true)
       const response = await fetch('/api/addresses')
-      const data = JSON.parse(await response.json())
+      const data = await response.json()
       if (response.ok) {
         console.log(data)
         setAddresses(data)
