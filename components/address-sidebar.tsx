@@ -9,6 +9,10 @@ import { X } from 'lucide-react'
 export function AddressSidebar() {
   const { selectedAddress, setSelectedAddress } = useAddress()
   if (!selectedAddress) return null
+  const location = new google.maps.LatLng(
+    selectedAddress.latitude ?? selectedAddress.validated.result.geocode.location.latitude,
+    selectedAddress.longitude ?? selectedAddress.validated.result.geocode.location.longitude
+  )
   return (
     <div
       className="absolute top-0 left-0"
@@ -18,9 +22,7 @@ export function AddressSidebar() {
     >
       <Sidebar className="w-[600px]">
         <SidebarHeader className="p-0 w-full">
-          <StreetView
-            latitude={selectedAddress.latitude}
-            longitude={selectedAddress.longitude}
+          <StreetView location={location}
           />
         </SidebarHeader>
         <SidebarContent className="w-full">

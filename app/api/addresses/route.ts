@@ -47,7 +47,7 @@ export async function POST() {
       'data',
       'updated_validated.json'
     )
-    const updatedData = fs.readFileSync(updated, 'utf-8')
+    const updatedData = JSON.parse(fs.readFileSync(updated, 'utf-8'))
     fs.writeFileSync(notUpdated, JSON.stringify(updatedData, null, 2))
   } catch (error) {
     return NextResponse.json(
