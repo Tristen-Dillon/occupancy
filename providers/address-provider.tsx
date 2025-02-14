@@ -30,8 +30,9 @@ export function AddressProvider({ children }: AddressProviderProps) {
     const fetchAddresses = async () => {
       setLoading(true)
       const response = await fetch('/api/addresses')
-      const data = await response.json()
+      const data = JSON.parse(await response.json())
       if (response.ok) {
+        console.log(data)
         setAddresses(data)
       } else {
         toast.error('Failed to fetch addresses')
@@ -49,7 +50,7 @@ export function AddressProvider({ children }: AddressProviderProps) {
     ])
     const response = await fetch('/api/addresses', {
       method: 'PUT',
-      body: JSON.stringify(addresses),
+      body: JSON.stringify(address),
     })
     if (response.ok) {
       toast.success('Address updated successfully')

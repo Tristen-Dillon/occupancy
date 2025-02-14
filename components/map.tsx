@@ -11,6 +11,7 @@ import Markers from './markers'
 import Legend from './legend'
 import SearchMarker from './search-marker'
 import SaveToExcelButton from './save-to-excel-button'
+import SaveButton from './save-button'
 // import Bounds from './bounds'
 
 //Map's styling
@@ -82,6 +83,9 @@ export default function GoogleMapComponent() {
               buttonText: 'Save Google GEOCODE to Excel',
             }}
           />
+        </div>
+        <div className='absolute bottom-[15px] right-[5%]'>
+            <SaveButton/>
         </div>
       </GoogleMap>
     </div>

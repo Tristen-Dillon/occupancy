@@ -33,15 +33,21 @@ export default function Markers({
 
   useEffect(() => {
     const zoom_changed = () => {
+      const zoom = map?.getZoom();
+      setZoom(zoom ?? 0)
+    }
+
+    const bounds_changed = () => {
       const bounds = map?.getBounds()
       setBounds(bounds ?? null)
-      setZoom(map?.getZoom() ?? 0)
     }
 
     setTimeout(() => {
       zoom_changed()
+      bounds_changed()
     }, 1000)
     map?.addListener('zoom_changed', zoom_changed)
+    map?.addListener('bounds_changed', bounds_changed)
   }, [map])
 
   let filteredAddresses: ValidatedAddress[] = []
