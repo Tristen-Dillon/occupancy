@@ -66,8 +66,10 @@ export default function SearchMarker({
               map?.setCenter(
                 dataset === 'fmp'
                   ? new google.maps.LatLng(
-                      address.latitude ?? 0,
-                      address.longitude ?? 0
+                      address.latitude ??
+                        address.validated.result.geocode.location.latitude,
+                      address.longitude ??
+                        address.validated.result.geocode.location.longitude
                     )
                   : new google.maps.LatLng(
                       address.validated.result.geocode.location.latitude,

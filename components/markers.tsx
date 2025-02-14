@@ -44,13 +44,30 @@ export default function Markers({
     map?.addListener('zoom_changed', zoom_changed)
   }, [map])
 
-  const filteredAddresses = addresses.filter((address) => {
-    return (
-      bounds?.contains(
-        new google.maps.LatLng(address.latitude ?? 0, address.longitude ?? 0)
-      ) ?? false
-    )
-  })
+  let filteredAddresses: ValidatedAddress[] = []
+  if (dataset === 'fmp') {
+    filteredAddresses = addresses.filter((address) => {
+      return (
+        (bounds?.contains(
+          new google.maps.LatLng(address.latitude ?? 0, address.longitude ?? 0)
+        ) &&
+          address.latitude &&
+          address.longitude) ??
+        false
+      )
+    })
+  } else {
+    filteredAddresses = addresses.filter((address) => {
+      return (
+        bounds?.contains(
+          new google.maps.LatLng(
+            address.validated.result.geocode.location.latitude,
+            address.validated.result.geocode.location.longitude
+          )
+        ) ?? false
+      )
+    })
+  }
 
   return (
     <div>
@@ -71,8 +88,8 @@ export default function Markers({
                   address.longitude ?? 0
                 )
               : new google.maps.LatLng(
-                  address.validated.result.geocode.location.latitude ?? 0,
-                  address.validated.result.geocode.location.longitude ?? 0
+                  address.validated.result.geocode.location.latitude,
+                  address.validated.result.geocode.location.longitude
                 )
           }
           draggable={dataset === 'fmp' && zoom > 18}
