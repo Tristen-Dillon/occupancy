@@ -69,5 +69,8 @@
     "onlyBuiltDependencies": [
       "sharp"
     ]
+  },
+  "resolutions": {
+    "sharp": "0.30.7"
   }
 }
