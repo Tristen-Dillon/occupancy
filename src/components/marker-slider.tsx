@@ -17,6 +17,7 @@ export default function MarkerSlider() {
       <Slider
         defaultValue={[distanceMargin]}
         max={100}
+        min={0}
         step={1}
         onValueChange={(value) => debouncedSetMargin(value[0])}
       />
