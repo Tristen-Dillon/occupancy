@@ -12,7 +12,7 @@ export default function MarkerSlider() {
   }, 500)
 
   return (
-    <div className="absolute bottom-[5%] left-5 w-[300px]">
+    <div className="absolute bottom-[5%] left-5 w-[300px] bg-background p-4 rounded-md space-y-2">
       <p>Distance Margin: {distanceMargin} meters</p>
       <Slider
         defaultValue={[distanceMargin]}

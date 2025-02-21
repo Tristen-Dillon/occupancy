@@ -69,7 +69,6 @@ export function MarkersProvider({ children }: { children: React.ReactNode }) {
     }
 
     if (
-      distanceMargin === 0 ||
       !bounds ||
       bounds.getNorthEast().lat() === 0 ||
       bounds.getNorthEast().lng() === 0 ||

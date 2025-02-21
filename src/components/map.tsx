@@ -11,6 +11,7 @@ import Markers from './markers'
 import Legend from './legend'
 import SaveToExcelButton from './save-to-excel-button'
 import MarkerSlider from './marker-slider'
+import OccupancySearch from './occupancy-search'
 // import Bounds from './bounds'
 
 //Map's styling
@@ -52,9 +53,7 @@ export default function GoogleMapComponent() {
         onLoad={onLoad}
         onUnmount={onUnmount}
       >
-        {/* <Bounds /> */}
         <Markers />
-        {/* <Markers color="red" dataset="google" /> */}
         <MarkerSlider />
         <Legend
           items={[
@@ -67,6 +66,9 @@ export default function GoogleMapComponent() {
         />
         <div className="absolute top-[10px] right-[50%] flex gap-4">
           <SaveToExcelButton />
+        </div>
+        <div className="absolute top-[10px] right-[25%] flex gap-4">
+          <OccupancySearch />
         </div>
       </GoogleMap>
     </div>
