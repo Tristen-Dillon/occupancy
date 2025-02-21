@@ -1,41 +1,73 @@
 {
   "name": "frontend",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "A blank template to get started with Payload 3.0",
+  "license": "MIT",
+  "type": "module",
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
+    "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
+    "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
+    "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
+    "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
+    "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
+    "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
+    "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
   },
   "dependencies": {
+    "@payloadcms/db-postgres": "latest",
+    "@payloadcms/next": "latest",
+    "@payloadcms/payload-cloud": "latest",
+    "@payloadcms/richtext-lexical": "latest",
     "@radix-ui/react-dialog": "^1.1.6",
     "@radix-ui/react-separator": "^1.1.2",
+    "@radix-ui/react-slider": "^1.2.3",
     "@radix-ui/react-slot": "^1.1.2",
     "@radix-ui/react-tooltip": "^1.1.8",
     "@react-google-maps/api": "^2.20.6",
+    "@tabler/icons-react": "^3.30.0",
+    "@tailwindcss/postcss": "^4.0.7",
+    "autoprefixer": "^10.4.20",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "cross-env": "^7.0.3",
+    "framer-motion": "^12.4.7",
+    "graphql": "^16.8.1",
+    "lodash": "^4.17.21",
     "lucide-react": "^0.475.0",
-    "next": "15.1.7",
+    "next": "15.1.5",
     "next-themes": "^0.4.4",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "payload": "latest",
+    "postcss": "^8.5.3",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "react-dropzone": "^14.3.5",
     "react-json-pretty": "^2.2.0",
-    "sonner": "^1.7.4",
+    "sharp": "0.32.6",
+    "sonner": "^2.0.1",
     "tailwind-merge": "^3.0.1",
+    "tailwindcss": "3",
     "tailwindcss-animate": "^1.0.7",
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "15.1.7",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "@eslint/eslintrc": "^3.2.0",
+    "@types/lodash": "^4.17.15",
+    "@types/node": "^22.5.4",
+    "@types/react": "19.0.7",
+    "@types/react-dom": "19.0.3",
+    "eslint": "^9.16.0",
+    "eslint-config-next": "15.1.5",
+    "prettier": "^3.4.2",
+    "typescript": "5.7.3"
+  },
+  "engines": {
+    "node": "^18.20.2 || >=20.9.0",
+    "pnpm": "^9"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "sharp"
+    ]
   }
 }
